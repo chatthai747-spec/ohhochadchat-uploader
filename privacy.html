@@ -1,1 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy & Terms of Service — OhhoChadchat Uploader</title>
+    <meta name="description" content="Privacy Policy and Terms of Service for Ohho Chadchat Content Delivery System. In-house desktop automation compliance document for TikTok and Meta API review.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #050507;
+            --bg-card: #0a0a0c;
+            --surface-card: #181824;
+            --surface-card-hover: #1f1f32;
+            --accent-purple: #8b5cf6;
+            --accent-purple-light: #c084fc;
+            --accent-purple-neon: #a855f7;
+            --border-subtle: rgba(139, 92, 246, 0.25);
+            --border-glow: rgba(168, 85, 247, 0.45);
+            --text-heading: #ffffff;
+            --text-body: #94a3b8;
+            --text-muted: #64748b;
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'Prompt', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-body);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.65;
+        }
+
+        /* Ambient Glow Spheres */
+        .glow-sphere {
+            position: fixed;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.16) 0%, rgba(5, 5, 7, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(40px);
+        }
+
+        .ambient-glow-bottom {
+            position: fixed;
+            bottom: -160px;
+            right: 15%;
+            width: 580px;
+            height: 580px;
+            background: radial-gradient(circle, rgba(192, 132, 252, 0.09) 0%, rgba(5, 5, 7, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(50px);
+        }
+
+        /* Subdued Brand Watermark */
+        .bg-watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(520px, 80vw);
+            height: min(520px, 80vw);
+            background-image: url('Logo_Ohho_Chadchat-removebg.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.038;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Header Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 12, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.85rem 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand-identity {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo-img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            border-radius: 8px;
+            filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
+            transition: transform 0.25s ease;
+        }
+
+        .brand-logo-img:hover {
+            transform: scale(1.06);
+        }
+
+        .brand-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: -0.3px;
+            color: var(--text-heading);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-inhouse {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.45);
+            color: #d8b4fe;
+            padding: 2px 7px;
+            border-radius: 999px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.45rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(139, 92, 246, 0.12);
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            font-weight: 600;
+            box-shadow: 0 0 14px rgba(139, 92, 246, 0.3);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(24, 24, 36, 0.9);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 8px;
+            padding: 2px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: #64748b;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 4px 9px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn:hover {
+            color: #ffffff;
+        }
+
+        .lang-btn.active {
+            background: #8b5cf6;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+
+        /* Main Container */
+        main {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 3.5rem 1.75rem 4.5rem;
+        }
+
+        /* Page Intro Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3.2rem;
+        }
+
+        .compliance-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #a855f7;
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            padding: 5px 14px;
+            border-radius: 6px;
+            margin-bottom: 1.1rem;
+        }
+
+        .page-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #c084fc 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .page-meta {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* Official Document Container */
+        .policy-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 2.8rem 2.6rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 24px rgba(139, 92, 246, 0.15);
+        }
+
+        .doc-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .doc-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .doc-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .doc-header-row h3 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .section-num {
+            color: var(--accent-purple-light);
+        }
+
+        .doc-p {
+            font-size: 0.95rem;
+            color: var(--text-body);
+            line-height: 1.7;
+            margin-bottom: 0.9rem;
+        }
+
+        .callout-box {
+            background: rgba(139, 92, 246, 0.08);
+            border-left: 3px solid var(--accent-purple);
+            border-radius: 0 8px 8px 0;
+            padding: 1rem 1.3rem;
+            margin: 1.1rem 0;
+            font-size: 0.92rem;
+            color: #e2e8f0;
+        }
+
+        .doc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin: 1rem 0;
+            padding-left: 0.25rem;
+        }
+
+        .doc-list li {
+            position: relative;
+            padding-left: 1.4rem;
+            font-size: 0.92rem;
+            color: var(--text-body);
+        }
+
+        .doc-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: var(--accent-purple-light);
+            font-size: 1.3rem;
+        }
+
+        /* Scope Pills */
+        .scopes-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 1.1rem 0;
+        }
+
+        .scope-badge {
+            background: rgba(10, 10, 12, 0.85);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 0.5rem 0.85rem;
+            display: inline-flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .scope-badge code {
+            font-family: var(--font-mono);
+            font-size: 0.84rem;
+            color: #d8b4fe;
+            font-weight: 600;
+        }
+
+        .scope-badge span {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-top: 1.1rem;
+        }
+
+        .contact-item {
+            background: rgba(10, 10, 12, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 1.1rem;
+        }
+
+        .contact-item h5 {
+            font-family: var(--font-display);
+            font-size: 0.92rem;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item a {
+            color: var(--accent-purple-light);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(139, 92, 246, 0.18);
+            background: #050507;
+            padding: 2rem 1.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-note {
+            font-size: 0.76rem;
+            color: #475569;
+            margin-top: 2px;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-nav a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--accent-purple-light);
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .header-right {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .policy-card {
+                padding: 1.8rem 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow-sphere"></div>
+    <div class="ambient-glow-bottom"></div>
+    <div class="bg-watermark"></div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="brand-identity" id="brand-logo-link">
+                <img src="Logo_Ohho_Chadchat-removebg.png" alt="Ohho Chadchat Logo" class="brand-logo-img">
+                <div class="brand-text">
+                    <span class="brand-title">
+                        <span data-i18n="system_name">OhhoChadchat Uploader</span>
+                        <span class="badge-inhouse" data-i18n="badge_inhouse">In-House</span>
+                    </span>
+                </div>
+            </a>
+            <div class="header-right">
+                <nav aria-label="Main Navigation">
+                    <ul class="nav-links">
+                        <li><a href="index.html" class="nav-link" id="nav-home" data-i18n="nav_home">Home</a></li>
+                        <li><a href="features.html" class="nav-link" id="nav-features" data-i18n="nav_features">Features</a></li>
+                        <li><a href="privacy.html" class="nav-link active" id="nav-privacy" data-i18n="nav_privacy">Privacy Policy</a></li>
+                    </ul>
+                </nav>
+                <!-- Bilingual Toggle -->
+                <div class="lang-switcher" aria-label="Language Selector">
+                    <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">EN</button>
+                    <button class="lang-btn" data-lang="th" onclick="switchLanguage('th')">TH</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="page-header">
+            <div class="compliance-tag">
+                <span data-i18n="compliance_tag">🛡️ TikTok & Meta API Compliance Document</span>
+            </div>
+            <h1 class="page-title">
+                <span data-i18n="privacy_title_1">Privacy Policy &</span> <span class="gradient-text" data-i18n="privacy_title_2">Terms of Service</span>
+            </h1>
+            <div class="page-meta" data-i18n="privacy_meta">
+                Effective Date: September 2026 &bull; Scope: In-House Production System &bull; Single-Tenant Private Architecture
+            </div>
+        </div>
+
+        <article class="policy-card" id="policy-document">
+            <!-- Introduction -->
+            <section class="doc-section">
+                <div class="doc-header-row">
+                    <h3 data-i18n="doc_intro_title">Introduction & Personal-Use Scope</h3>
+                </div>
+                <p class="doc-p" data-i18n="doc_intro_p1" data-i18n-html="true">
+                    This Privacy Policy and Terms of Service document governs the operation of the <strong>OhhoChadchat Uploader</strong> (Content Delivery & Video Upload Automation System). This software is an in-house desktop automation utility engineered strictly for private editorial and channel publishing operations for the verified creator channel <strong>Ohho Chadchat</strong>.
+                </p>
+                <div class="callout-box" data-i18n="doc_intro_callout" data-i18n-html="true">
+                    <strong>Note for Platform Compliance Officers:</strong> This system is strictly for personal, in-house administration of our verified channels. It is NOT a public SaaS platform, multi-tenant service, or commercial product offered to third parties.
+                </div>
+            </section>
+
+            <!-- Section 1 -->
+            <section class="doc-section">
+                <div class="doc-header-row">
+                    <h3 data-i18n="doc_s1_title">1. Terms of Service & Non-Commercial Use</h3>
+                </div>
+                <p class="doc-p" data-i18n="doc_s1_p">
+                    The OhhoChadchat Uploader is proprietary software operated exclusively by the internal production team of Ohho Chadchat:
+                </p>
+                <ul class="doc-list">
+                    <li data-i18n="doc_s1_li1" data-i18n-html="true"><strong>No Public Registration:</strong> There are no public user accounts, registrations, subscriptions, or fees.</li>
+                    <li data-i18n="doc_s1_li2" data-i18n-html="true"><strong>Exclusive Channel Management:</strong> All uploaded videos, titles, and descriptions are proprietary creator assets owned by Ohho Chadchat.</li>
+                    <li data-i18n="doc_s1_li3" data-i18n-html="true"><strong>Platform Terms Adherence:</strong> The application complies with TikTok Developer Terms, Meta Platform Terms, and YouTube Developer Policies.</li>
+                </ul>
+            </section>
+
+            <!-- Section 2 -->
+            <section class="doc-section">
+                <div class="doc-header-row">
+                    <h3 data-i18n="doc_s2_title">2. Data Collection and OAuth Scopes Usage</h3>
+                </div>
+                <p class="doc-p" data-i18n="doc_s2_p">
+                    The software requests explicit OAuth permissions from the channel administrator to perform automated video publishing:
+                </p>
+
+                <div class="scopes-row">
+                    <div class="scope-badge">
+                        <code data-i18n="scope1_title">user.info.basic</code>
+                        <span data-i18n="scope1_desc">TikTok API &bull; Verify identity of authenticated channel</span>
+                    </div>
+                    <div class="scope-badge">
+                        <code data-i18n="scope2_title">video.upload</code>
+                        <span data-i18n="scope2_desc">TikTok API &bull; Upload video directly to the creator's drafts or feed.</span>
+                    </div>
+                    <div class="scope-badge">
+                        <code data-i18n="scope3_title">video.publish</code>
+                        <span data-i18n="scope3_desc">TikTok API &bull; Publish scheduled video clips to creator feed</span>
+                    </div>
+                </div>
+
+                <p class="doc-p" data-i18n="doc_s2_tokens" data-i18n-html="true">
+                    <strong>Local Offline Token Storage:</strong> All OAuth tokens (Access Tokens and Refresh Tokens) are encrypted and stored 100% locally strictly on Ohho Chadchat's internal production workstations. At no point are tokens or credentials transmitted to an external web server, cloud database, or third-party relay.
+                </p>
+            </section>
+
+            <!-- Section 3 -->
+            <section class="doc-section">
+                <div class="doc-header-row">
+                    <h3 data-i18n="doc_s3_title">3. Data Sharing & Retention</h3>
+                </div>
+                <p class="doc-p" data-i18n="doc_s3_p">
+                    We maintain an uncompromising privacy standard:
+                </p>
+                <ul class="doc-list">
+                    <li data-i18n="doc_s3_li1" data-i18n-html="true"><strong>Zero Data Brokering:</strong> We do not sell, trade, rent, or share user data, channel analytics, or video files with any third party.</li>
+                    <li data-i18n="doc_s3_li2" data-i18n-html="true"><strong>Authorized Official Endpoints:</strong> Videos and metadata are sent directly and securely to the official API endpoints of Google, Meta, and TikTok.</li>
+                    <li data-i18n="doc_s3_li3" data-i18n-html="true"><strong>Immediate Revocation:</strong> Deleting the local configuration folder or revoking access via platform security settings immediately destroys all local session states.</li>
+                </ul>
+            </section>
+
+            <!-- Section 4 -->
+            <section class="doc-section">
+                <div class="doc-header-row">
+                    <h3 data-i18n="doc_s4_title">4. Official Contact Information</h3>
+                </div>
+                <p class="doc-p" data-i18n="doc_s4_p">
+                    For platform auditors, API review teams, or security questions, please contact our channel administration directly through our official verified platforms:
+                </p>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <h5 data-i18n="contact_yt">YouTube Channel</h5>
+                        <a href="https://www.youtube.com/@OhhoChadchat" target="_blank" rel="noopener noreferrer">youtube.com/@OhhoChadchat</a>
+                    </div>
+                    <div class="contact-item">
+                        <h5 data-i18n="contact_fb">Facebook Page</h5>
+                        <a href="https://www.facebook.com/ohhochadchat" target="_blank" rel="noopener noreferrer">facebook.com/ohhochadchat</a>
+                    </div>
+                    <div class="contact-item">
+                        <h5 data-i18n="contact_tt">TikTok Profile</h5>
+                        <a href="https://www.tiktok.com/@ohhochadchat" target="_blank" rel="noopener noreferrer">tiktok.com/@ohhochadchat</a>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <div class="footer-copy" data-i18n="footer_copy">&copy; 2026 Ohho Chadchat Channel. All Rights Reserved.</div>
+                <div class="footer-note" data-i18n="footer_note">OhhoChadchat Uploader — In-House Private Content Pipeline</div>
+            </div>
+            <nav class="footer-nav" aria-label="Footer Navigation">
+                <a href="index.html" data-i18n="nav_home">Home</a>
+                <a href="features.html" data-i18n="nav_features">Features</a>
+                <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy & Terms</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Translation Engine -->
+    <script src="lang.js"></script>
+</body>
+</html>
